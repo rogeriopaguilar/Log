@@ -1,0 +1,77 @@
+<div class="container" >
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+    <form #heroForm="ngForm" (submit)="onSubmit()" style="width: 420px;">
+
+<div class="form-control " >
+    
+    <div class="row ">
+        <div class="col-6">   
+            <label for="name" id="lblname" >Nome</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">   
+            <input  style="width: 400px;" required name="name" id="name" [(ngModel)]="model.name" #name="ngModel">
+        </div>    
+    </div>
+</div>
+<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+    Nome é obrigatório
+
+</div>
+<div class="form-control" >
+    <div class="row">
+        <div class="col-4">   
+        <label for="lblalterego" id="lblautorego" >Alter ego</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">   
+
+            <input  style="width: 400px;" required name="alterego" id="alterego" required [(ngModel)]="model.alterEgo" #alterEgo="ngModel"> 
+        </div>
+    </div>
+</div>
+<div [hidden]="alterEgo.valid || alterEgo.pristine" class="alert alert-danger">
+    Alter ego é obrigatório
+
+</div>
+
+
+<div class="form-control mb-3" >
+    <div class="row">
+        <div class="col">
+            <label for="power">Poder</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+
+            <select  style="width:400px;" class="form-select" id="power" name="power" required [(ngModel)]="model.power" #power="ngModel">
+            <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+            </select>
+
+        </div>
+    </div>
+</div>
+
+<div [hidden]="power.valid || power.pristine" class="alert alert-danger"  >
+    Power é obrigatório
+    </div>
+
+    <br />
+    <div style="text-align: center;">
+        <button id="cmdNovo"  class="btn btn-success" (click)="novo();heroForm.reset()">Novo</button>
+            &nbsp;&nbsp;        
+        <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Enviar</button>
+    </div>
+</form>
+</div>
+<div class="col-md-3"></div>
+</div>
+
+</div>
